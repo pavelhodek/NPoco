@@ -1391,7 +1391,7 @@ namespace NPoco
                 }
 
                 // Dont update result only columns
-                if (i.Value.ResultColumn || i.Value.ComputedColumn)
+                if (i.Value.ResultColumn || i.Value.ComputedColumn || i.Value.IgnoreUpdateColumn)
                     continue;
 
                 if (!i.Value.VersionColumn && columns != null && !columns.Contains(i.Value.ColumnName, StringComparer.OrdinalIgnoreCase))

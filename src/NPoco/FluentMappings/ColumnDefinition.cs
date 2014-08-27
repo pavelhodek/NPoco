@@ -11,6 +11,7 @@ namespace NPoco.FluentMappings
         public Type DbColumnType { get; set; }
         public bool? ResultColumn { get; set; }
         public bool? IgnoreColumn { get; set; }
+        public bool? IgnoreUpdateColumn { get; set; }
         public bool? VersionColumn { get; set; }
         public bool? ComputedColumn { get; set; }
         public bool? ForceUtc { get; set; }

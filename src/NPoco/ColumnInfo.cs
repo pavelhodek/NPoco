@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -13,6 +13,7 @@ namespace NPoco
         public bool ResultColumn { get; set; }
         public bool ComputedColumn { get; set; }
         public bool IgnoreColumn { get; set; }
+        public bool IgnoreUpdateColumn { get; set; }
         public bool VersionColumn { get; set; }
         public bool ForceToUtc { get; set; }
         public Type ColumnType { get; set; }
@@ -25,6 +26,7 @@ namespace NPoco
             var colAttrs = attrs.OfType<ColumnAttribute>();
             var columnTypeAttrs = attrs.OfType<ColumnTypeAttribute>();
             var ignoreAttrs = attrs.OfType<IgnoreAttribute>();
+            var ignoreUpdateAttrs = attrs.OfType<IgnoreUpdateAttribute>();
 
             // Check if declaring poco has [ExplicitColumns] attribute
             var explicitColumns = mi.DeclaringType.GetCustomAttributes(typeof(ExplicitColumnsAttribute), true).Any();
@@ -36,6 +38,11 @@ namespace NPoco
             if ((explicitColumns && !colAttrs.Any()) || ignoreAttrs.Any())
             {
                 ci.IgnoreColumn = true;
+            }
+
+            // ignore column for update
+            if (ignoreUpdateAttrs.Any()) {
+                ci.IgnoreUpdateColumn = true;
             }
 
             // Read attribute

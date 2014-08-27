@@ -32,6 +32,7 @@ namespace NPoco.FluentMappings
         IColumnBuilder WithDbType<T>();
         IColumnBuilder Version();
         IColumnBuilder Ignore();
+        IColumnBuilder IgnoreUpdate();
         IColumnBuilder Result();
         IColumnBuilder Computed();
     }
@@ -77,6 +78,12 @@ namespace NPoco.FluentMappings
         public IColumnBuilder Ignore()
         {
             _columnDefinition.IgnoreColumn = true;
+            return this;
+        }
+
+        public IColumnBuilder IgnoreUpdate()
+        {
+            _columnDefinition.IgnoreUpdateColumn = true;
             return this;
         }
 

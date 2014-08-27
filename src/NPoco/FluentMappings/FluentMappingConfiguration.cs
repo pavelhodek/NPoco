@@ -64,6 +64,7 @@ namespace NPoco.FluentMappings
                     column.DbColumnName = scannerSettings.PropertiesNamed(prop);
                     column.DbColumnAlias = scannerSettings.AliasNamed(prop);
                     column.IgnoreColumn = scannerSettings.IgnorePropertiesWhere.Any(x => x.Invoke(prop));
+                    column.IgnoreUpdateColumn = scannerSettings.IgnoreUpdatePropertiesWhere.Any(x => x.Invoke(prop));
                     column.DbColumnType = scannerSettings.DbColumnTypesAs(prop);
                     column.ResultColumn = scannerSettings.ResultPropertiesWhere(prop);
                     column.ComputedColumn = scannerSettings.ComputedPropertiesWhere(prop);
@@ -136,6 +137,7 @@ namespace NPoco.FluentMappings
                     columnDefinition.Value.DbColumnAlias = columnInfo.ColumnAlias;
                     columnDefinition.Value.DbColumnType = columnInfo.ColumnType;
                     columnDefinition.Value.IgnoreColumn = columnInfo.IgnoreColumn;
+                    columnDefinition.Value.IgnoreUpdateColumn = columnInfo.IgnoreUpdateColumn;
                     columnDefinition.Value.ResultColumn = columnInfo.ResultColumn;
                     columnDefinition.Value.ComputedColumn = columnInfo.ComputedColumn;
                     columnDefinition.Value.VersionColumn = columnInfo.VersionColumn;
@@ -170,6 +172,7 @@ namespace NPoco.FluentMappings
                     convColDefinition.DbColumnAlias = overrideColumnDefinition.Value.DbColumnAlias ?? convColDefinition.DbColumnAlias;
                     convColDefinition.DbColumnType = overrideColumnDefinition.Value.DbColumnType ?? convColDefinition.DbColumnType;
                     convColDefinition.IgnoreColumn = overrideColumnDefinition.Value.IgnoreColumn ?? convColDefinition.IgnoreColumn;
+                    convColDefinition.IgnoreUpdateColumn = overrideColumnDefinition.Value.IgnoreUpdateColumn ?? convColDefinition.IgnoreUpdateColumn;
                     convColDefinition.ResultColumn = overrideColumnDefinition.Value.ResultColumn ?? convColDefinition.ResultColumn;
                     convColDefinition.ComputedColumn = overrideColumnDefinition.Value.ComputedColumn ?? convColDefinition.ComputedColumn;
                     convColDefinition.VersionColumn = overrideColumnDefinition.Value.VersionColumn ?? convColDefinition.VersionColumn;

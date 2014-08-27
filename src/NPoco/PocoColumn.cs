@@ -14,6 +14,7 @@ namespace NPoco
         public string ColumnName;
         public MemberInfo MemberInfo;
         public bool ResultColumn;
+        public bool IgnoreUpdateColumn;
         public bool VersionColumn;
         public bool ComputedColumn;
         private Type _columnType;

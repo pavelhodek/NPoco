@@ -30,6 +30,12 @@ namespace NPoco.FluentMappings
             return this;
         }
 
+        public IColumnsBuilderConventions IgnoreUpdateWhere(Func<MemberInfo, bool> ignoreUpdatePropertiesWhereFunc)
+        {
+            _scannerSettings.IgnoreUpdatePropertiesWhere.Add(ignoreUpdatePropertiesWhereFunc);
+            return this;
+        }
+
         public IColumnsBuilderConventions ResultWhere(Func<MemberInfo, bool> resultPropertiesWhereFunc)
         {
             _scannerSettings.ResultPropertiesWhere = resultPropertiesWhereFunc;
